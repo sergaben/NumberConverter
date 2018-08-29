@@ -47,7 +47,7 @@ class NumberParser(){
         tenthNumberAsText + ConjunctionAndOthers.space + unitNumberAsText
       }
     }else {
-      "Number has more or less than 2 digits or is not a valid number, use another method for this purpose"
+      "Number has more or less than 2 diits or is not a valid number, use another method for this purpose"
     }
   }
 
