@@ -139,6 +139,22 @@ class NumberParser(){
     }
   }
 
+  def printNumberAsText(number: Int): Unit = {
+    val numericLength = getNumericLength(number)
+    numericLength match {
+      case 1 => println(parseDecimalOneDigitNumberToText(number))
+      case 2 => println(parseDecimalTwoDigitNumberToText(number))
+      case 3 => println(parseHundredNumberToText(number))
+      case 4 => println(parseThousandNumberToText(number))
+      case 5 => println(parseThousandNumberToText(number))
+      case 6 => println(parseThousandNumberToText(number))
+      case 7 => println(parseMillionNumberToText(number))
+      case 8 => println(parseMillionNumberToText(number))
+      case 9 => println(parseMillionNumberToText(number))
+      case _ => "No matching number"
+    }
+  }
+
 
 
 

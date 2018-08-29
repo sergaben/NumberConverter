@@ -8,5 +8,6 @@ import Logic.NumberParser
   */
 object Main extends App{
  val numberParser = new NumberParser
-  println(numberParser.parseHundredNumberToText(523))
+
+ numberParser.printNumberAsText(78949)
 }
