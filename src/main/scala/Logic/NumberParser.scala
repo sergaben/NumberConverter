@@ -10,7 +10,7 @@ import Util._
   */
 
 //TODO - finish Parser - build recognition of numbers into words
-class NumberParser(){
+class NumberParser{
 
   def isNegNum(number : Int) : Boolean = if(number<0) true else false
 
@@ -118,7 +118,6 @@ class NumberParser(){
       val numberInDigits : List[Int] = splitNumberByDigits(number)
 
       val splittedList  = numberInDigits.splitAt(2)
-      println(splittedList._1)
       val firstNumber : String = parseDecimalTwoDigitNumberToText(splittedList._1.mkString.toInt) + ConjunctionAndOthers.space + Million.million + ConjunctionAndOthers.comma + ConjunctionAndOthers.space
 
       val restOfNumber : String = parseThousandNumberToText(splittedList._2.mkString.toInt)
