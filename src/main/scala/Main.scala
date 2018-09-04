@@ -1,4 +1,4 @@
-import Logic.NumberParser
+import Controller.PrinterController
 
 /**
   *
@@ -7,7 +7,8 @@ import Logic.NumberParser
   *
   */
 object Main extends App{
- val numberParser = new NumberParser
 
- numberParser.printNumberAsText(78949)
+  val printerController = new PrinterController(456)
+  printerController.printNumber()
+
 }
