@@ -1,4 +1,5 @@
 
+
 /**
   *
   * @project NumberToWrittenEng
@@ -7,6 +8,5 @@
   */
 
 object Main extends App {
-
 
 }
