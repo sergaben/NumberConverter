@@ -1,4 +1,4 @@
-
+import Logic.Parser
 
 /**
   *
@@ -8,5 +8,9 @@
   */
 
 object Main extends App {
+
+  val parser = new Parser
+
+  parser.printNumberAsText(2345)
 
 }
