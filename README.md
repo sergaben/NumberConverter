@@ -9,7 +9,7 @@ Parse a number from 0 to 999,999,999
 
 ## Contributions
 
-Just clone the repo and give me feedback in anything that you think I can improved
+Just clone the repo and give me feedback in anything that you think I can improve
 
 ## License
 
