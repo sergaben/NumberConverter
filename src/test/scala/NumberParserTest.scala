@@ -1,4 +1,4 @@
-import Logic.NumberParser
+import Logic.Parser
 
 /**
   *
@@ -8,7 +8,7 @@ import Logic.NumberParser
   */
 class NumberParserTest extends UnitTest("Parser"){
 
-  val parser = new NumberParser()
+  val parser = new Parser
 
   it should "return true if the given number is negative" in {
 

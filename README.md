@@ -15,7 +15,7 @@ Just clone the repo and give me feedback in anything that you think I can improv
 
 MIT License
 
-Copyright (c) 2018 Sergio Gayon Benavides, Vibhusha Raval, Shanice Alexis, Luke Gould, Dovydas Meskauskas, Rubesh Mahesan and Sathees Sivanathan
+Copyright (c) 2018 Sergio Gayon Benavides
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
