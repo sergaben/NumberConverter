@@ -1,14 +1,12 @@
-import Controller.PrinterController
 
 /**
   *
   * @project NumberToWrittenEng
-  * @author sergaben on 28/08/2018.
+  * @author sergaben on 29/08/2018.
   *
   */
-object Main extends App{
 
-  val printerController = new PrinterController(456)
-  printerController.printNumber()
+object Main extends App {
+
 
 }
