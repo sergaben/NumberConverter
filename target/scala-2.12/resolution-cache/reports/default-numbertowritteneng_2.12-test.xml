@@ -7,15 +7,15 @@
 		revision="0.1"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20180828194553"/>
+		date="20180906183346"/>
 	<dependencies>
 		<module organisation="org.scalamock" name="scalamock_2.12">
-			<revision name="4.1.0" status="release" pubdate="20180217183734" resolver="public" artresolver="public" homepage="http://scalamock.org/" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="6">
+			<revision name="4.1.0" status="release" pubdate="20180217183734" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalamock.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="6">
 				<license name="MIT" url="https://opensource.org/licenses/MIT"/>
-				<metadata-artifact status="successful" details="" size="2260" time="111" location="C:\Users\sergaben\.ivy2\cache\org.scalamock\scalamock_2.12\ivy-4.1.0.xml" searched="true" original-local-location="C:\Users\sergaben\.ivy2\cache\org.scalamock\scalamock_2.12\ivy-4.1.0.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalamock/scalamock_2.12/4.1.0/scalamock_2.12-4.1.0.pom"/>
+				<metadata-artifact status="no" details="" size="3059" time="0" location="C:\Users\sergaben\.ivy2\cache\org.scalamock\scalamock_2.12\ivy-4.1.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scalamock/scalamock_2.12/4.1.0/scalamock_2.12-4.1.0.pom"/>
 				<caller organisation="default" name="numbertowritteneng_2.12" conf="test, compile, runtime" rev="4.1.0" rev-constraint-default="4.1.0" rev-constraint-dynamic="4.1.0" callerrev="0.1"/>
 				<artifacts>
-					<artifact name="scalamock_2.12" type="jar" ext="jar" status="successful" details="" size="901426" time="659" location="C:\Users\sergaben\.ivy2\cache\org.scalamock\scalamock_2.12\jars\scalamock_2.12-4.1.0.jar">
+					<artifact name="scalamock_2.12" type="jar" ext="jar" status="no" details="" size="901426" time="0" location="C:\Users\sergaben\.ivy2\cache\org.scalamock\scalamock_2.12\jars\scalamock_2.12-4.1.0.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scalamock/scalamock_2.12/4.1.0/scalamock_2.12-4.1.0.jar"/>
 					</artifact>
 				</artifacts>

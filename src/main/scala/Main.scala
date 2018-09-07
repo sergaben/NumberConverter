@@ -1,5 +1,7 @@
 import Logic.Parser
 
+import scala.util.Random
+
 /**
   *
   * @project NumberToWrittenEng
@@ -10,7 +12,9 @@ import Logic.Parser
 object Main extends App {
 
   val parser = new Parser
+  val randomNumber = Random.nextInt(999999999)
 
-  parser.printNumberAsText(2345)
+  println(parser.printNumberAsText(randomNumber))
+
 
 }

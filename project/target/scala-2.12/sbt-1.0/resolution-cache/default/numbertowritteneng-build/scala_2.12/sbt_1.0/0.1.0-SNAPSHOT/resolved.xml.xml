@@ -4,7 +4,7 @@
 		module="numbertowritteneng-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180828171447"
+		publication="20180906183328"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
