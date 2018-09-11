@@ -14,7 +14,6 @@ object Main extends App {
   val parser = new Parser
   val randomNumber = Random.nextInt(999999999)
 
-  println(parser.printNumberAsText(randomNumber))
-
+  parser.printNumberAsText(randomNumber)
 
 }

@@ -9,5 +9,5 @@ package Util
 object Thousand extends Enumeration {
   type Number1000 = Value
 
-  val thousand = Value("thousand")
+  val thousand = Value("thousand").toString
 }

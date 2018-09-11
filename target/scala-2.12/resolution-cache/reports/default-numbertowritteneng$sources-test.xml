@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="test"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20180906183347"/>
+		date="20180907133733"/>
 	<dependencies>
 		<module organisation="org.scalamock" name="scalamock_2.12">
 			<revision name="4.1.0" status="release" pubdate="20180217183734" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scalamock.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="5">

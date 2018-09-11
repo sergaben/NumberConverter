@@ -9,5 +9,5 @@ package Util
 object Million extends Enumeration {
   type Number1000000 = Value
 
-  val million = Value("million")
+  val million = Value("million").toString
 }

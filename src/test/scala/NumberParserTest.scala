@@ -116,7 +116,7 @@ class NumberParserTest extends UnitTest("Parser"){
     parser.printNumberAsText(500001) shouldEqual "five hundred thousand and one"
   }
 
-  it should "return seven million if the given number is 700000" in {
+  it should "return seven million if the given number is 7000000" in {
     parser.printNumberAsText(7000000) shouldEqual "seven million"
   }
 
