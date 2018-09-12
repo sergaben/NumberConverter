@@ -1,6 +1,6 @@
-# Super simple number parser
+# Super simple number converter to text
 
-Parse a number from 0 to 999,999,999
+Convert a number from 0 to 999,999,999
 
 ## Technologies used
 
