@@ -1,4 +1,4 @@
-import Logic.Parser
+import Logic.Converter
 
 /**
   *
@@ -6,9 +6,9 @@ import Logic.Parser
   * @author sergaben on 28/08/2018.
   *
   */
-class NumberParserTest extends UnitTest("Parser"){
+class NumberConverterTest extends UnitTest("Parser"){
 
-  val parser = new Parser
+  val parser = new Converter
 
   it should "return not a valid number if the given number is -1" in {
     parser.printNumberAsText(-89) shouldEqual "Not a valid number, a valid number is one between 0 and 999,999,999"

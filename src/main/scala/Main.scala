@@ -1,4 +1,4 @@
-import Logic.Parser
+import Logic.Converter
 
 import scala.util.Random
 
@@ -11,9 +11,9 @@ import scala.util.Random
 
 object Main extends App {
 
-  val parser = new Parser
-  val randomNumber = Random.nextInt(84059)
+  val parser = new Converter
+  val randomNumber = Random.nextInt(999999999)
 
-  println(parser.printNumberAsText(4001))
+  println(parser.printNumberAsText(randomNumber))
 
 }
