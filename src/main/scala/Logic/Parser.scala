@@ -72,119 +72,64 @@ class Parser() {
 
   // ***** helpers method for Thousand and million functions ***************
 
-  private def getThousandWithFourDigits(number: List[Int]): String = {
-    val splitNumber = number.splitAt(1)
-    val firstPartOfNumber = parseDecimalOneDigitNumberToText(List(number.head))
-
-
-    if (containsAllZerosAfterFirstDigit(splitNumber)) { // all zeros after first number
-      concatenateNumbersAsCompleteString(firstPartOfNumber,"",Thousand.thousand)
-    }
-    else {
-      val restOfNumber = parseHundredNumberToText(number.tail)
-      concatenateNumbersAsCompleteString(firstPartOfNumber,restOfNumber,Thousand.thousand,ConjunctionAndOthers.and)
-    }
-  }
-
-  private def getThousandWithFiveDigits(number: List[Int]): String = {
-    val splitList = number.splitAt(2)
-//    val numberWithOneDigit = parseDecimalOneDigitNumberToText(List(number.head))
-    if (containsAllZerosAfterFirstDigit(splitList)) { // find whole thousand numbers
-
-      val numberWithTwoDigits = parseDecimalTwoDigitNumberToText(splitList._1)
-      concatenateNumbersAsCompleteString(numberWithTwoDigits,"",Thousand.thousand)
-
-    }
-    else if (hasMixedZerosAndNumbers(splitList)) { // find thousand numbers with middle zeros
-      val restOfNumber = parseHundredNumberToText(splitList._2)
-      val numberWithTwoDigits = parseDecimalTwoDigitNumberToText(splitList._1)
-      concatenateNumbersAsCompleteString(numberWithTwoDigits,restOfNumber,Thousand.thousand,ConjunctionAndOthers.and)
-
-    }
-    else { // for a common number without zeros in the middle of the number
-      val restOfNumber = parseHundredNumberToText(splitList._2)
-      val numberWithTwoDigits = parseDecimalTwoDigitNumberToText(splitList._1)
-      concatenateNumbersAsCompleteString(numberWithTwoDigits,restOfNumber,Thousand.thousand,ConjunctionAndOthers.comma)
-
-    }
-  }
-
-  private def getThousandWithSixDigits(number: List[Int]): String = {
-    val splitNumber = number.splitAt(3)
-
-    if (hasMixedZerosAndNumbers(splitNumber)) { // thousand hundred with zeros in between the number
+  private def genericLogicForThousand(firstNumber:String,splitNumber:(List[Int],List[Int])): String ={
+    if (hasMixedZerosAndNumbers(splitNumber)) { // find thousand numbers with middle zeros
       val restOfNumber = parseHundredNumberToText(splitNumber._2)
-      val firstThreeDigitsOfNumber = parseHundredNumberToText(splitNumber._1)
-      concatenateNumbersAsCompleteString(firstThreeDigitsOfNumber,restOfNumber,Thousand.thousand,ConjunctionAndOthers.and)
+      concatenateNumbersAsCompleteString(firstNumber,restOfNumber,Thousand.thousand,ConjunctionAndOthers.and)
     }
-    else if (containsAllZerosAfterFirstDigit(splitNumber)) { // thousand hundred numbers all with trailing zeros
-      val firstThreeDigitsOfNumber = parseHundredNumberToText(splitNumber._1)
-      concatenateNumbersAsCompleteString(firstThreeDigitsOfNumber,"",Thousand.thousand)
+    else if (containsAllZerosAfterFirstDigit(splitNumber)) { // all zeros after first number
+      concatenateNumbersAsCompleteString(firstNumber,"",Thousand.thousand)
     }
     else {
       val restOfNumber = parseHundredNumberToText(splitNumber._2)
-      val firstThreeDigitsOfNumber = parseHundredNumberToText(splitNumber._1)
-      concatenateNumbersAsCompleteString(firstThreeDigitsOfNumber,restOfNumber,Thousand.thousand,ConjunctionAndOthers.comma)
+      concatenateNumbersAsCompleteString(firstNumber,restOfNumber,Thousand.thousand,ConjunctionAndOthers.comma)
     }
   }
 
-  private def getMillionWithSevenDigits(number: List[Int]): String = {
-    val splitNumber = number.splitAt(1)
-    val millionOneDigits = parseDecimalOneDigitNumberToText(List(number.head))
-
+  private def genericLogicForMillion(firstNumber:String,splitNumber:(List[Int],List[Int])): String ={
     if (containsAllZerosAfterFirstDigit(splitNumber)) {
-      concatenateNumbersAsCompleteString(millionOneDigits,"",Million.million)
+      concatenateNumbersAsCompleteString(firstNumber,"",Million.million)
     }
     else if (hasMixedZerosAndNumbers(splitNumber)) { // fix duplication of this if statement
       val fiveDigitsOfNumber = splitNumber._2.tail
 
-      getMillionWithZerosInMiddle(millionOneDigits,fiveDigitsOfNumber)
+      getMillionWithZerosInMiddle(firstNumber,fiveDigitsOfNumber)
 
     }
     else {
-      val restOfNumber: String = parseThousandNumberToText(number.tail.length, number.tail)
-      concatenateNumbersAsCompleteString(millionOneDigits,restOfNumber,Million.million,ConjunctionAndOthers.comma)
+      val restOfNumber: String = parseThousandNumberToText(splitNumber._2.length, splitNumber._2)
+      concatenateNumbersAsCompleteString(firstNumber,restOfNumber,Million.million,ConjunctionAndOthers.comma)
     }
   }
 
-  private def getMillionWithEightDigits(number: List[Int]): String = {
-    val splitNumber = number.splitAt(2)
-    val millionTwoDigits = parseDecimalTwoDigitNumberToText(splitNumber._1)
-    val restOfNumber: String = parseThousandNumberToText(splitNumber._2.length, splitNumber._2)
+  private def genericMillionNumber(number:List[Int],splitBy:Int): String ={
+    val splitNumber = number.splitAt(splitBy)
 
-    if (containsAllZerosAfterFirstDigit(splitNumber)) {
-      concatenateNumbersAsCompleteString(millionTwoDigits,"",Million.million)
-    }
-    else if (hasMixedZerosAndNumbers(splitNumber)) { // fix duplication of code in this if statement
-      val fiveDigitsOfNumber = splitNumber._2.tail
-
-      getMillionWithZerosInMiddle(millionTwoDigits,fiveDigitsOfNumber)
-    }
-    else {
-      concatenateNumbersAsCompleteString(millionTwoDigits,restOfNumber,Million.million,ConjunctionAndOthers.comma)
+    splitBy match {
+      case 1 => val firstOneDigitOfNumber = parseDecimalOneDigitNumberToText(splitNumber._1)
+        genericLogicForMillion(firstOneDigitOfNumber,splitNumber)
+      case 2 => val firstTwoDigitsOfNumber = parseDecimalTwoDigitNumberToText(splitNumber._1)
+        genericLogicForMillion(firstTwoDigitsOfNumber,splitNumber)
+      case 3 =>val firstThreeDigitsOfNumber = parseHundredNumberToText(splitNumber._1)
+        genericLogicForMillion(firstThreeDigitsOfNumber,splitNumber)
     }
   }
 
-  private def getMillionWithNineDigits(number: List[Int]): String = {
+  private def genericThousandNumber(number:List[Int],splitBy:Int): String ={
+    val splitNumber = number.splitAt(splitBy)
 
-    val splittedNumber = number.splitAt(3)
-    val millionWithThreeDigits = parseHundredNumberToText(splittedNumber._1)
-
-    if (containsAllZerosAfterFirstDigit(splittedNumber)) {
-      concatenateNumbersAsCompleteString(millionWithThreeDigits, "", Million.million)
-    }
-    else if (hasMixedZerosAndNumbers(splittedNumber)) {
-      val fiveDigitsOfNumber = splittedNumber._2.tail
-      getMillionWithZerosInMiddle(millionWithThreeDigits,fiveDigitsOfNumber)
-    }
-    else {
-      val restOfNumber: String = parseThousandNumberToText(splittedNumber._2.length, splittedNumber._2)
-      concatenateNumbersAsCompleteString(millionWithThreeDigits,restOfNumber,Million.million,ConjunctionAndOthers.comma)
+    splitBy match {
+      case 1 => val firstOneDigitOfNumber = parseDecimalOneDigitNumberToText(splitNumber._1)
+        genericLogicForThousand(firstOneDigitOfNumber,splitNumber)
+      case 2 => val firstTwoDigitsOfNumber = parseDecimalTwoDigitNumberToText(splitNumber._1)
+        genericLogicForThousand(firstTwoDigitsOfNumber,splitNumber)
+      case 3 =>val firstThreeDigitsOfNumber = parseHundredNumberToText(splitNumber._1)
+        genericLogicForThousand(firstThreeDigitsOfNumber,splitNumber)
     }
 
   }
 
-  // ***********************************************************************
+  // ****************************************************************************
 
   private def parseDecimalOneDigitNumberToText(number: List[Int]): String = {
       From1to9.values.filter(_.id == number.head - 1).head.toString
@@ -198,7 +143,7 @@ class Parser() {
     val indexUnitNumber = List(number(1))
 
       if (lastPartOfNumberAsInt == 0) { // for two digits number ending in 0
-        From10to90.values.filter(_.id == number.head.toInt - 1).head.toString
+        From10to90.values.filter(_.id == number.head - 1).head.toString
       }
       else if(firstPartOfNumberAsInt == 0){ // for two digits number where the first number is a zero
         parseDecimalOneDigitNumberToText(List(lastPartOfNumberAsInt))
@@ -237,26 +182,31 @@ class Parser() {
 
   private def parseThousandNumberToText(length:Int, number: List[Int]): String = {
     if (length == 4) {
-      getThousandWithFourDigits(number)
+
+      genericThousandNumber(number,1)
+
     }
     else if (length == 5) {
 
-      getThousandWithFiveDigits(number)
+      genericThousandNumber(number,2)
 
     }
     else  // 6 digits
-      getThousandWithSixDigits(number)
+
+      genericThousandNumber(number,3)
 
   }
 
   private def parseMillionNumberToText(length : Int, number: List[Int]): String = {
     if (length == 7) {
-      getMillionWithSevenDigits(number)
+
+      genericMillionNumber(number,1)
+
     }
     else if (length == 8) {
-      getMillionWithEightDigits(number)
+      genericMillionNumber(number,2)
     }
-    else getMillionWithNineDigits(number)
+    else genericMillionNumber(number,3)
   }
 
   def printNumberAsText(number: Int): String = {

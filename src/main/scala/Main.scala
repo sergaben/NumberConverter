@@ -12,8 +12,8 @@ import scala.util.Random
 object Main extends App {
 
   val parser = new Parser
-  val randomNumber = Random.nextInt(999999999)
+  val randomNumber = Random.nextInt(84059)
 
-  parser.printNumberAsText(randomNumber)
+  println(parser.printNumberAsText(4001))
 
 }

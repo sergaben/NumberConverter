@@ -72,12 +72,12 @@ class NumberParserTest extends UnitTest("Parser"){
     parser.printNumberAsText(1011) shouldEqual "one thousand and eleven"
   }
 
-  it should "return four thousand and five hundred and eighty one if the given number is 4581" in {
-    parser.printNumberAsText(4581) shouldEqual "four thousand and five hundred and eighty one"
+  it should "return four thousand, five hundred and eighty one if the given number is 4581" in {
+    parser.printNumberAsText(4581) shouldEqual "four thousand, five hundred and eighty one"
   }
 
-  it should "return four thousand and five hundred and twelve if the given number is 4512" in {
-    parser.printNumberAsText(4512) shouldEqual "four thousand and five hundred and twelve"
+  it should "return four thousand, five hundred and twelve if the given number is 4512" in {
+    parser.printNumberAsText(4512) shouldEqual "four thousand, five hundred and twelve"
   }
 
   it should "return forty thousand if the given number is 40000" in {
