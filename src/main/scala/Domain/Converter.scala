@@ -1,4 +1,4 @@
-package Logic
+package Domain
 
 import Util._
 

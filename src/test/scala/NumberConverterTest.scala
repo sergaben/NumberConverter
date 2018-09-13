@@ -1,4 +1,4 @@
-import Logic.Converter
+import Domain.Converter
 
 /**
   *
