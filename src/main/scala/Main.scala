@@ -1,4 +1,4 @@
-import Domain.Converter
+import Logic.Converter
 
 import scala.util.Random
 

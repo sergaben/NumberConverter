@@ -1,4 +1,4 @@
-package Domain
+package Logic
 
 import Constants._
 
@@ -192,12 +192,12 @@ class Converter() {
     val numericLength = getNumericLength(number)
     val numberAsList = splitNumberByDigits(number)
     numericLength match {
-            case 1 => convertDecimalOneDigitNumberToText(numberAsList)
-            case 2 => convertDecimalTwoDigitNumberToText(numberAsList)
-            case 3 => convertHundredNumberToText(numberAsList)
-            case n if n > 0 && n < 7 => convertThousandNumberToText(n,numberAsList)
-            case m if m > 0 && m < 10 =>convertMillionNumberToText(m,numberAsList)
-            case _ => "Not a valid number, a valid number is one between 0 and 999,999,999"
+      case 1 => convertDecimalOneDigitNumberToText(numberAsList)
+      case 2 => convertDecimalTwoDigitNumberToText(numberAsList)
+      case 3 => convertHundredNumberToText(numberAsList)
+      case n if n > 0 && n < 7 => convertThousandNumberToText(n,numberAsList)
+      case m if m > 0 && m < 10 =>convertMillionNumberToText(m,numberAsList)
+      case _ => "Not a valid number, a valid number is one between 0 and 999,999,999"
     }
   }
 

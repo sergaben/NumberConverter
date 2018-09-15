@@ -1,4 +1,4 @@
-import Domain.NumberHelpers
+import Helpers.NumberHelpers
 import org.scalamock.proxy.Mock
 
 /**

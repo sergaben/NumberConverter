@@ -1,4 +1,4 @@
-package Domain
+package Helpers
 
 /**
   *
@@ -25,4 +25,6 @@ trait NumberHelpers {
       splitNumberByDigits(number).length
     }
   }
+
+
 }
