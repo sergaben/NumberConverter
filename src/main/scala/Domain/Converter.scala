@@ -1,6 +1,6 @@
 package Domain
 
-import Util._
+import Constants._
 
 /**
   *

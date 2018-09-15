@@ -11,12 +11,14 @@ trait NumberHelpers {
 
   private def isOverBillion(number: Int): Boolean = number > 999999999
 
-  def splitNumberByDigits(number: Int): List[Int] = number.toString.map(_.asDigit).toList
+  private def isNegOrOverBillion(number:Int): Boolean = if(isNegNum(number) || isOverBillion(number)) true else false
+
+  def splitNumberByDigits(number: Int): List[Int] = if(isNegOrOverBillion(number)) List() else number.toString.map(_.asDigit).toList
 
   def getNumericLength(number: Int): Int ={
-    if(isNegNum(number) || isOverBillion(number))
+    if(isNegOrOverBillion(number))
       -1
-    else if(splitNumberByDigits(number).length == 1 && splitNumberByDigits(number).head == 0 ){
+    else if(number == 0){
       -1
     }
     else {
