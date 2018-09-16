@@ -11,9 +11,9 @@ import scala.util.Random
 
 object Main extends App {
 
-  val parser = new Converter
+  val converter = new Converter
   val randomNumber = Random.nextInt(999999999)
 
-  println(parser.printNumberAsText(randomNumber))
+  println(converter.printNumberAsText(randomNumber))
 
 }

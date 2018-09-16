@@ -8,7 +8,7 @@ import org.scalamock.proxy.Mock
   *
   */
 
-// TODO - Mocking the trait NumberHelpers, not entirely sure if this is the right way to do it
+// Mocking the trait NumberHelpers, not entirely sure if this is the right way to do it
 class NumberHelpersTest extends UnitTest ("HelpersForNumber"){
 
   val numberHelpersMock: NumberHelpers with Mock = mock[NumberHelpers]
@@ -78,6 +78,16 @@ class NumberHelpersTest extends UnitTest ("HelpersForNumber"){
   "The helper method splitNumberByDigits" should "return an empty list if the number is a negative number or is over 999,999,999" in {
     numberHelpersMock.expects('splitNumberByDigits)(-89).returning(List())
     numberHelpersMock.splitNumberByDigits(-89)
+  }
+
+  "The helper method containsAllZerosAfterFirstDigit" should "return true if the second list is made up entirely from 0s" in {
+    numberHelpersMock.expects('containsAllZerosAfterFirstDigit)((List(1),List(0,0,0,0))).returning(true)
+    numberHelpersMock.containsAllZerosAfterFirstDigit((List(1),List(0,0,0,0)))
+  }
+
+  "The helper method containsAllZerosAfterFirstDigit" should "return false if the second list contains other than 0s" in {
+    numberHelpersMock.expects('containsAllZerosAfterFirstDigit)((List(1),List(2,0,5,0))).returning(false)
+    numberHelpersMock.containsAllZerosAfterFirstDigit((List(1),List(2,0,5,0)))
   }
 
 }

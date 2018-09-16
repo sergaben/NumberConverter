@@ -26,5 +26,13 @@ trait NumberHelpers {
     }
   }
 
+  def containsAllZerosAfterFirstDigit(splitNumber: (List[Int], List[Int])): Boolean = {
+    splitNumber._2.forall(_ == 0)
+  }
+
+  def hasMixedZerosAndNumbers(splitNumber: (List[Int], List[Int])): Boolean = {
+    splitNumber._2.head == 0 && !containsAllZerosAfterFirstDigit(splitNumber)
+  }
+
 
 }
