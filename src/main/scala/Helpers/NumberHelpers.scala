@@ -6,12 +6,7 @@ package Helpers
   * @author sergaben on 13/09/2018.
   *
   */
-trait NumberHelpers {
-  private def isNegNum(number: Int): Boolean = if (number < 0) true else false
-
-  private def isOverBillion(number: Int): Boolean = number > 999999999
-
-  private def isNegOrOverBillion(number:Int): Boolean = if(isNegNum(number) || isOverBillion(number)) true else false
+trait NumberHelpers extends ErrorHandling{
 
   def splitNumberByDigits(number: Int): List[Int] = if(isNegOrOverBillion(number)) List() else number.toString.map(_.asDigit).toList
 
