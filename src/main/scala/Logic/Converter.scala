@@ -1,6 +1,7 @@
 package Logic
 
 import Constants._
+import Helpers.NumberHelpers
 
 /**
   *
@@ -11,32 +12,7 @@ import Constants._
 
 //TODO - change how the logic is structured, try to optimise it
 
-class Converter() {
-
-  private def isNegNum(number: Int): Boolean = if (number < 0) true else false
-
-  private def isOverBillion(number: Int): Boolean = number > 999999999
-
-  private def splitNumberByDigits(number: Int): List[Int] = number.toString.map(_.asDigit).toList
-
-  private def getNumericLength(number: Int): Int ={
-    if(isNegNum(number) || isOverBillion(number))
-      -1
-    else if(splitNumberByDigits(number).length == 1 && splitNumberByDigits(number).head == 0 ){
-      -1
-    }
-    else {
-      splitNumberByDigits(number).length
-    }
-  }
-
-  private def containsAllZerosAfterFirstDigit(splitNumber: (List[Int], List[Int])): Boolean = {
-    splitNumber._2.forall(_ == 0)
-  }
-
-  private def hasMixedZerosAndNumbers(splitNumber: (List[Int], List[Int])): Boolean = {
-    splitNumber._2.head == 0 && !containsAllZerosAfterFirstDigit(splitNumber)
-  }
+class Converter() extends NumberHelpers{
 
   private def concatenateNumbersAsCompleteString(firstPartOfNumber: String, secondPartOfNumber:String ="",
                                                  typeOfNumber:String = "", commaOrAnd:String =""): String ={
